@@ -8,7 +8,7 @@
 			"  MedusaResponse,",
 			"} from \"@medusajs/framework/http\"",
 			"",
-			"export const GET = (",
+			"export const GET = async (",
 			"  req: MedusaRequest,",
 			"  res: MedusaResponse",
 			") => {",
@@ -165,7 +165,7 @@
 			"",
 			"export const config: SubscriberConfig = {",
 			"    event: \"${1:product.created}\",",
-			"}",
+			"}"
 		]
-	},
+	}
 }

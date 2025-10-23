@@ -2,7 +2,7 @@
   "name": "medusajs-tools",
   "displayName": "Medusa.js Tools",
   "description": "Tools and snippets for development with Medusa.js",
-  "version": "2.2.0",
+  "version": "2.4.0",
   "publisher": "perseidesjs",
   "engines": {
     "vscode": "^1.74.0"

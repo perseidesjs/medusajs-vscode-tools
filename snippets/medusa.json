@@ -3,81 +3,53 @@
 		"prefix": "mrg",
 		"description": "Creates a new GET API route for Medusa.js",
 		"body": [
-			"import type {",
-			"  MedusaRequest,",
-			"  MedusaResponse,",
-			"} from \"@medusajs/framework/http\"",
+			"import type { MedusaRequest, MedusaResponse } from \"@medusajs/framework/http\";",
 			"",
-			"export const GET = async (",
-			"  req: MedusaRequest,",
-			"  res: MedusaResponse",
-			") => {",
+			"import { ContainerRegistrationKeys } from \"@medusajs/framework/utils\";",
+			"",
+			"export const GET = async (req: MedusaRequest, res: MedusaResponse) => {",
+			"  const query = req.scope.resolve(ContainerRegistrationKeys.QUERY);",
+			"",
 			"  $1",
-			"  res.json({",
-			"    message: \"[GET] Hello world!\",",
-			"  })",
-			"}"
+			"",
+			"  res.json({message:\"Return your entities\"})",
+			"};"
 		]
 	},
 	"Medusa - Route POST": {
 		"prefix": "mrp",
 		"description": "Creates a new POST API route for Medusa.js",
 		"body": [
-			"import type {",
-			"  MedusaRequest,",
-			"  MedusaResponse,",
-			"} from \"@medusajs/framework/http\"",
+			"import type { MedusaRequest, MedusaResponse } from \"@medusajs/framework/http\";",
 			"",
-			"export const POST = async (",
-			"  req: MedusaRequest,",
-			"  res: MedusaResponse",
-			") => {",
-			"  // Add your POST logic here",
+			"export const POST = async (req: MedusaRequest, res: MedusaResponse) => {",
 			"  $1",
-			"  res.status(201).json({",
-			"    message: \"[POST] Hello world!\",",
-			"  })",
-			"}"
+			"  res.status(201).json({ message: \"[POST] Success\" });",
+			"};"
 		]
 	},
 	"Medusa - Route PUT": {
 		"prefix": "mru",
 		"description": "Creates a new PATCH/PUT API route for Medusa.js",
 		"body": [
-			"import type {",
-			"  MedusaRequest,",
-			"  MedusaResponse,",
-			"} from \"@medusajs/framework/http\"",
+			"import type { MedusaRequest, MedusaResponse } from \"@medusajs/framework/http\";",
 			"",
-			"export const PUT = async (",
-			"  req: MedusaRequest,",
-			"  res: MedusaResponse",
-			") => {",
-			"  // Add your PUT logic here",
+			"export const PUT = async (req: MedusaRequest, res: MedusaResponse) => {",
 			"  $1",
-			"  res.json({",
-			"    message: \"[PUT] Hello world!\",",
-			"  })",
-			"}"
+			"  res.json({ message: \"[PUT] Success\" });",
+			"};"
 		]
 	},
 	"Medusa - Route DELETE": {
 		"prefix": "mrd",
 		"description": "Creates a new DELETE API route for Medusa.js",
 		"body": [
-			"import type {",
-			"  MedusaRequest,",
-			"  MedusaResponse,",
-			"} from \"@medusajs/framework/http\"",
+			"import type { MedusaRequest, MedusaResponse } from \"@medusajs/framework/http\";",
 			"",
-			"export const DELETE = async (",
-			"  req: MedusaRequest,",
-			"  res: MedusaResponse",
-			") => {",
-			"  // Add your DELETE logic here",
+			"export const DELETE = async (req: MedusaRequest, res: MedusaResponse) => {",
 			"  $1",
-			"  res.status(204).send()",
-			"}"
+			"  res.status(204).send();",
+			"};"
 		]
 	},
 	"Medusa - Workflow": {
@@ -124,15 +96,19 @@
 		"prefix": "mrm",
 		"description": "Creates a new Medusa.js middleware route configuration",
 		"body": [
-			"import { MiddlewareRoute } from \"@medusajs/framework\"",
+			"import {",
+			"  MiddlewareRoute",
+			"} from \"@medusajs/framework\";",
 			"",
 			"export const ${1:middlewareName}: MiddlewareRoute[] = [",
-			"    {",
-			"        method: [\"${2:GET}\"],",
-			"        matcher: \"${3:/store/custom/*}\",",
-			"        middlewares: [\"${4:authenticate}\"]",
-			"    }",
-			"]"
+			"  {",
+			"    method: [\"${2:GET}\"],",
+			"    matcher: \"${3:/store/custom/*}\",",
+			"    middlewares: [",
+			"      $4",
+			"    ],",
+			"  },",
+			"];"
 		]
 	},
 	"Medusa - Route Validator": {
@@ -145,7 +121,7 @@
 			"  $2",
 			"})",
 			"",
-			"export type ${1:ValidatorName}Type = z.infer<typeof ${1:ValidatorName}>"
+			"export type ${1:ValidatorName} = z.infer<typeof ${1:ValidatorName}>;"
 		]
 	},
 	"Medusa - Subscriber": {

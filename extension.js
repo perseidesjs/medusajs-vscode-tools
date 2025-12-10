@@ -26,8 +26,8 @@ function activate(context) {
           if (!value) {
             return 'Module name is required';
           }
-          if (!/^[a-z0-9-]+$/.test(value)) {
-            return 'Module name should contain only lowercase letters, numbers, and hyphens';
+          if (!/^[a-z0-9_]+$/.test(value)) {
+            return 'Module name should contain only lowercase letters, numbers, and underscores';
           }
           return null;
         }
@@ -56,8 +56,8 @@ function activate(context) {
             if (!value) {
               return 'Model name is required';
             }
-            if (!/^[a-z0-9-]+$/.test(value)) {
-              return 'Model name should contain only lowercase letters, numbers, and hyphens';
+            if (!/^[a-z0-9_]+$/.test(value)) {
+              return 'Model name should contain only lowercase letters, numbers, and underscores';
             }
             return null;
           }
@@ -308,7 +308,7 @@ export default ${className}
 
 function toPascalCase(str) {
   return str
-    .split('-')
+    .split('_')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join('');
 }

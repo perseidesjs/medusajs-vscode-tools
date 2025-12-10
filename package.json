@@ -12,7 +12,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:medusa-snippets.createModule"
+    "onCommand:medusa-snippets.createModule",
+    "onCommand:medusa-snippets.createApiEndpoint"
   ],
   "main": "./extension.js",
   "keywords": [
@@ -29,6 +30,11 @@
       {
         "command": "medusa-snippets.createModule",
         "title": "Create Medusa Module",
+        "category": "Medusa.js"
+      },
+      {
+        "command": "medusa-snippets.createApiEndpoint",
+        "title": "Add a new API endpoint",
         "category": "Medusa.js"
       }
     ],
